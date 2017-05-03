@@ -12,6 +12,15 @@ function phpunit_compat_autoloader($class) {
         $type       = $reflection->isAbstract() ? 'abstract class' : 'class';
         eval("$type $class extends $new_class {}");
     }
+    if (preg_match('@^phpunit\\\\@i', $class)) {
+        $namespace  = explode("\\", $class);
+        $ns_class   = array_pop($namespace);
+        $namespace  = implode("\\", $namespace);
+        $new_class  = str_replace("\\", "_", $class);
+        $reflection = new ReflectionClass($new_class);
+        $type       = $reflection->isAbstract() ? 'abstract class' : 'class';
+        eval("namespace $namespace { $type $ns_class extends $new_class {} }");
+    }
 }
 
 spl_autoload_register('phpunit_compat_autoloader');
