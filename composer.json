@@ -1,0 +1,14 @@
+{
+    "name": "crodas/phpunit-compat",
+    "authors": [
+        {
+            "name": "Cesar Rodas",
+            "email": "cesar@rodas.me"
+        }
+    ],
+    "description": "Hack to get unit tests for PHPUnit 5.x running in PHPUnit 6.x",
+    "autoload": {
+        "files": ["phpunit-compat.php"]
+    },
+    "require": {}
+}
