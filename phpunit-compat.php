@@ -5,7 +5,7 @@
  * will create classes compatible from 5.x if the current 
  * PHPUnit is 6.x
  */
-function phpunit_compat_autoloader() {
+function phpunit_compat_autoloader($class) {
     if (preg_match('@^phpunit_@i', $class)) {
         $new_class  = str_replace("_", "\\", $class);
         $reflection = new ReflectionClass($new_class);
