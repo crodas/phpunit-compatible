@@ -8,6 +8,9 @@
 function phpunit_compat_autoloader($class) {
     if (preg_match('@^phpunit_@i', $class)) {
         $new_class  = str_replace("_", "\\", $class);
+        if (!class_exists($new_class, false)) {
+            return false;
+        }
         $reflection = new ReflectionClass($new_class);
         $type       = $reflection->isAbstract() ? 'abstract class' : 'class';
         if (!class_exists($class, false)) {
@@ -19,6 +22,9 @@ function phpunit_compat_autoloader($class) {
         $ns_class   = array_pop($namespace);
         $namespace  = implode("\\", $namespace);
         $new_class  = str_replace("\\", "_", $class);
+        if (!class_exists($new_class, false)) {
+            return false;
+        }
         $reflection = new ReflectionClass($new_class);
         $type       = $reflection->isAbstract() ? 'abstract class' : 'class';
         if (!class_exists($class, false)) {
