@@ -10,7 +10,7 @@
     "autoload": {
         "files": ["phpunit-compat.php"]
     },
-    "version": "1.5.0",
+    "version": "1.6.0",
     "require": {
         "phpunit/phpunit": "~5.0 | ~6.0"
     }
